@@ -1,0 +1,23 @@
+seed: 43
+
+likelihoods:
+- type: mock_mr
+  enabled: true
+  json_file: "./mock_observations.json"
+  N_masses_evaluation: 100 # TODO: for testing
+  N_masses_batch_size: 20
+  seed: 42
+
+sampler:
+  type: "eos-reweighting"
+
+  eos_file: ../test_prior/outdir/prior_jester.npz
+
+  # Mass grid
+  n_grid: 200
+  m_min: 1.1
+  m_max: null
+
+  batch_size: 1000
+
+  output_dir: ./outdir

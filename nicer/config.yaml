@@ -1,0 +1,50 @@
+seed: 43
+
+likelihoods:
+- type: radio
+  enabled: true
+  pulsars:
+    - name: J0740+6620
+      mass_mean: 2.08
+      mass_std: 0.07
+
+- type: gw
+  enabled: true
+  events:
+    - name: GW170817
+      nf_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/gw_maf/gw170817/gw170817_xp_nrtv3/"
+  N_masses_evaluation: 1000
+  N_masses_batch_size: 200
+
+- type: nicer
+  enabled: true
+  pulsars:
+    - name: J0030
+      amsterdam_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/nicer_maf/J00300451/amsterdam_pdtu"
+      maryland_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/nicer_maf/J00300451/maryland_2spot_rm"
+    - name: J0740
+      amsterdam_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/nicer_maf/J07406620/amsterdam_gamma_nicerxmm"
+      maryland_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/nicer_maf/J07406620/maryland_dittmann2024_nicerxmm_full"
+    - name: J0437
+      amsterdam_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/nicer_maf/J04374715/amsterdam_cst_pdt/"
+      maryland_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/nicer_maf/J04374715/maryland/"
+    - name: J0614
+      maryland_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/nicer_maf/J06143329/maryland_3circle/"
+    - name: J1614
+      amsterdam_model_dir: "/Users/Woute029/Documents/Code/projects/jester_review/jester/jesterTOV/inference/flows/models/nicer_maf/J16142230/amsterdam_stu/"
+  N_masses_evaluation: 1000
+  N_masses_batch_size: 200
+
+sampler:
+  type: "eos-reweighting"
+
+  eos_file: ../test_prior/outdir/prior_jester.npz
+
+  # Mass grid
+  n_grid: 200
+  m_min: 1.1
+  m_max: null
+
+  batch_size: 1000
+
+  output_dir: ./outdir/
